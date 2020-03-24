@@ -1,7 +1,20 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": "./src",
+    "paths": {
+      "@shared/*":["./app/shared/*"],
+      "@environment/*":["./environments/*"],
+      "@sharedPages/*":["./app/shared/pages/*"],
+      "@sharedInterfaces/*":["./app/shared/interface/*"],
+      "@pages/*":["./app/pages/*"],
+      "@services/*":["./app/shared/services/*"],
+      "@dashboard/*":["./app/pages/dashboard/*"],
+      "@category/*":["./app/pages/category/*"],
+      "@manufacturer/*":["./app/pages/manufacturer/*"],
+      "@supplier/*":["./app/pages/supplier/*"],
+
+    },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,

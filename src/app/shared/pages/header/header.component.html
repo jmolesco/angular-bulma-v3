@@ -1,0 +1,58 @@
+<nav class="navbar is-dark">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="../">
+                <img src="assets/img/log1.png" alt="Logo">
+            </a>
+            <span class="navbar-burger burger" data-target="navbarMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </span>
+        </div>
+        <div id="navbarMenu" class="navbar-menu">
+            <div class="navbar-end">
+                <a class="navbar-item is-active" routerLink="/">
+                    Dashboard
+                </a>
+                <a class="navbar-item">
+                    Asset
+                </a>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        Maintenance
+                    </a>
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item" routerLink="/category">
+                            Category
+                        </a>
+                        <a class="navbar-item" routerLink="/manufacturer">
+                            Manufacturer
+                        </a>
+                        <a class="navbar-item" routerLink="/supplier">
+                            Supplier
+                        </a>
+                        <hr class="navbar-divider">
+                        <div class="navbar-item">
+                            Logout
+                        </div>
+                    </div>
+                </div>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        Account
+                    </a>
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item">
+                            Profile
+                        </a>
+                        <hr class="navbar-divider">
+                        <div class="navbar-item">
+                            Logout
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

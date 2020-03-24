@@ -1,0 +1,51 @@
+<article class="panel is-primary">
+    <p class="panel-heading">
+        Maintenance &raquo; New Category
+    </p>
+    <div class="panel-block">
+        &nbsp;
+    </div>
+
+    <div class="column column is-6 is-offset-3">
+        <form (ngSubmit)="submitInsertRecord()" #categoryForm="ngForm">
+            <div class="field">
+                <label class="label">Category ID</label>
+                <div class="control">
+                    <input class="input" type="text" placeholder="Category ID" [(ngModel)]="id"
+                        name="id"
+                    >
+                </div>
+                <p class="help">Category ID is required</p>
+            </div>
+            <div class="field">
+            
+                <label class="label">Category Name</label>
+                <div class="control">
+                    <input class="input" type="text" placeholder="Category Name"
+                        [(ngModel)]="categoryName" 
+                        #categoryNameInput="ngModel"
+                        name="categoryName"
+                        required
+                        />
+                </div>
+                <p class="help is-danger" 
+                    *ngIf="categoryNameInput.invalid && categoryNameInput.touched">
+                        Category Name is required
+                </p>
+            </div>
+            <div class="field is-grouped">
+                <div class="control">
+                    <button class="button is-link" 
+                        [disabled]="categoryForm.invalid"
+                    >Submit Record</button>
+                </div>
+                <div class="control">
+                    <button class="button is-link is-light" routerLink="/category">Go Back</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="panel-block">
+        &nbsp;
+    </div>
+</article>

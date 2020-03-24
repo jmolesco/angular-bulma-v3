@@ -1,0 +1,68 @@
+<article class="panel is-primary">
+  <p class="panel-heading">
+    Maintenance &raquo; Category
+  </p>
+  <div class="panel-block">
+    <div class="field has-addons">
+      <div class="control">
+        <input class="input" type="text" placeholder="Search Category">
+      </div>
+      <div class="control">
+        <a class="button is-primary">
+          Search
+        </a>
+      </div>
+    </div>
+    <!-- <p class="control has-icons-left">
+        <input class="input is-primary" type="text" placeholder="Search">
+        <span class="icon is-left">
+          <i class="fas fa-search" aria-hidden="true"></i>
+        </span>
+      </p> -->
+  </div>
+  <div class="panel-block">
+    <p class="control has-icons-left">
+      <button class="button is-info is-fullwidth" routerLink="/new">Add New Category</button>
+    </p>
+  </div>
+  <div class="column is-8 is-offset-2">
+    <table class="table is-fullwidth is-hoverable">
+      <thead>
+        <tr>
+          <th>&nbsp;</th>
+          <th>ID</th>
+          <th>Category Name</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let category of categoryList; index as i">
+          <th>&nbsp;</th>
+          <th scope="row">{{ category.id }}</th>
+          <td>
+            {{ category.name }}
+          </td>
+          <td>
+            <div class="buttons">
+              <button class="button is-primary">&nbsp;&nbsp;Edit&nbsp;&nbsp;</button>
+              <button class="button is-danger">Delete</button>
+            </div>
+            <!-- <button type="button" class="btn btn-primary"><i class="fa fa-pencil-square-o"
+                              aria-hidden="true"></i></button> &nbsp;&nbsp;
+                      <button type="button" class="btn btn-danger"><i class="fa fa-trash-o"
+                              aria-hidden="true"></i>
+                      </button> -->
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+    <div class="column is-8 is-offset-2">
+      <app-pagination></app-pagination>
+    </div>
+
+  </div>
+  <div class="panel-block">
+    &nbsp;
+  </div>
+</article>
