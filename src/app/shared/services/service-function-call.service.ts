@@ -16,6 +16,6 @@ export class ServiceFunctionCallService {
 
 
   sendNextPage(currentPage):void{
-    this.invokeFirstComponentFunction.emit(currentPage);
+     this.invokeFirstComponentFunction.emit(currentPage);
   }
 }

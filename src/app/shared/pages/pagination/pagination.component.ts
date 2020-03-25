@@ -57,11 +57,6 @@ export class PaginationComponent implements OnInit {
    let begin = ((this.currentPage - 1) * this.numberPerPage);
    let end = begin + this.numberPerPage;
    this.pageList  = this.list.slice(begin, end);
-   //console.log(this.pageList.length);
-  //  for(var i=1; i<=this.pageList.length;i++){
-  //    let currentKey = "current_key_"+i;
-  //    this.pageListWordings[i] =currentKey; 
-  //  }
    this.check();
  }
  check():void{
@@ -74,11 +69,6 @@ export class PaginationComponent implements OnInit {
 
   //Next Page
   submitRequestPage(id):void{
-    //this.isCurrent = this.currentPage === 1?"is-current":"";
-    
-    let receiver = this.currentKey+id;
-    this.comparerKey=receiver;
-    console.log(receiver);
     this.httpSharedService.sendNextPage(id);
   }
 

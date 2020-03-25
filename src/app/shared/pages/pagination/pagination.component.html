@@ -5,7 +5,7 @@
   <ul class="pagination-list" *ngFor="let item of pageList; index as i">
     <li>
       <a class="pagination-link"
-          name='{{pageListWordings[i]}}=== current_key_1?"is-current":"no-reste"' aria-label="Goto page i" 
+           aria-label="Goto page i" 
           (click)="submitRequestPage(pageList[i])">{{pageList[i]}}
       </a>
     </li>
