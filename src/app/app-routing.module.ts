@@ -9,7 +9,8 @@ import { SupplierModule } from '@pages/supplier/supplier.module';
 const routes: Routes = [
   {
     path:"",
-    component: DashboardComponent
+    component: DashboardComponent,
+    pathMatch:"full"
   },
   {
     path:"category",

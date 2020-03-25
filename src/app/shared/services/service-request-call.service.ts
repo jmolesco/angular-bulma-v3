@@ -49,15 +49,22 @@ export class ServiceRequestCallService {
     ).pipe(catchError(err=>this.handleError(err)));
   }
 
-  public deleteResponseCall(api_info:authenticationInterface,data?:any,){
+  public deleteResponseCall(api_info:authenticationInterface){
     let response;
     return response = this.httpClient.delete(
       api_info.api_url,
-      data, 
     ).pipe(catchError(err=>this.handleError(err)));
   }
 
   public getResponseCall(api_info:authenticationInterface,):Observable<any>{
+    let response;
+    response = this.httpClient.get<any>(
+      api_info.api_url
+    ).pipe(catchError(err=>this.handleError(err)));
+    return response;
+  }
+
+  public getResponseDetailViaIDCall(api_info:authenticationInterface):Observable<any>{
     let response;
     response = this.httpClient.get<any>(
       api_info.api_url

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import {CategoryService} from '../category.service';
 import {  ServiceFunctionCallService} from '@shared/shared.module'; 
+import { categoryInterface }  from '../categoryInterface';
 @Component({
   selector: 'app-category-list',
   templateUrl: './category-list.component.html',
@@ -45,5 +46,20 @@ export class CategoryListComponent implements OnInit {
       } 
     );
   }
-
+ 
+  submitDeleteRecord(id:number):void{
+    const dataDelete:categoryInterface = {
+      id:id,
+      name:""
+    }
+    this.httpService.deleteCategory(dataDelete).subscribe(
+      success => { 
+        alert('Done');
+        this.recordListLoader(this.currentPage, this.showAll)
+      },
+      error =>  { 
+        console.log(error) 
+      } 
+    );
+  }
 }

@@ -3,41 +3,38 @@
         Maintenance &raquo; New Category
     </p>
     <div class="panel-block">
-        &nbsp;
+        <div class="column column is-6 is-offset-3" *ngIf="functionStatus">
+            <div class="notification is-primary is-light has-text-centered">
+                <button class="delete"></button>
+                <strong>Record has been successfully {{functionUsed}}</strong>
+            </div>
+        </div>
     </div>
 
     <div class="column column is-6 is-offset-3">
-        <form (ngSubmit)="submitInsertRecord()" #categoryForm="ngForm">
-            <div class="field">
+        <form (ngSubmit)="functionState===false?submitInsertRecord():submitEditRecord()" #categoryForm="ngForm">
+            <div class="field" *ngIf="functionState">
                 <label class="label">Category ID</label>
                 <div class="control">
-                    <input class="input" type="text" placeholder="Category ID" [(ngModel)]="id"
-                        name="id"
-                    >
+                    <input class="input" type="text" placeholder="Category ID" [(ngModel)]="id" name="id"
+                        [disabled]="true">
                 </div>
                 <p class="help">Category ID is required</p>
             </div>
             <div class="field">
-            
+
                 <label class="label">Category Name</label>
                 <div class="control">
-                    <input class="input" type="text" placeholder="Category Name"
-                        [(ngModel)]="categoryName" 
-                        #categoryNameInput="ngModel"
-                        name="categoryName"
-                        required
-                        />
+                    <input class="input" type="text" placeholder="Category Name" [(ngModel)]="categoryName"
+                        #categoryNameInput="ngModel" name="categoryName" required />
                 </div>
-                <p class="help is-danger" 
-                    *ngIf="categoryNameInput.invalid && categoryNameInput.touched">
-                        Category Name is required
+                <p class="help is-danger" *ngIf="categoryNameInput.invalid && categoryNameInput.touched">
+                    Category Name is required
                 </p>
             </div>
             <div class="field is-grouped">
                 <div class="control">
-                    <button class="button is-link" 
-                        [disabled]="categoryForm.invalid"
-                    >Submit Record</button>
+                    <button class="button is-link" [disabled]="categoryForm.invalid">Submit Record</button>
                 </div>
                 <div class="control">
                     <button class="button is-link is-light" routerLink="/category">Go Back</button>
