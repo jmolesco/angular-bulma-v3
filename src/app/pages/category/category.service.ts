@@ -33,9 +33,23 @@ export class CategoryService {
     let response = this.httpServiceRequest.editResponseCall(url, category);
     return response;
   }
+  public deleteCategory(category:categoryInterface){
+    let url:authenticationInterface = { 
+        api_url:this.url+"/"+category.id,             
+    }
+    console.log(url);
+    let response = this.httpServiceRequest.deleteResponseCall(url);
+    return response;
+  }
   public getAllCategory(parameters):Observable<categoryInterface>{
     let url:authenticationInterface = { 
         api_url:this.url+"?currentpage="+parameters.currentPage+"&showall="+parameters.showAll,             
+    }
+    return this.httpServiceRequest.getResponseCall(url);
+  }
+  public getDetailViaIDCategory(id:number):Observable<categoryInterface>{
+    let url:authenticationInterface = { 
+        api_url:this.url+"/"+id,             
     }
     return this.httpServiceRequest.getResponseCall(url);
   }

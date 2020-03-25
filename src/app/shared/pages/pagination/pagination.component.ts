@@ -10,17 +10,20 @@ export class PaginationComponent implements OnInit {
  //VARIABLES DECLARATION
  list = new Array();
  pageList = new Array();
+ pageListWordings = new Array();
  currentPage:number = 0;
  numberPerPage:number = 0;
  numberOfPage:number =0;
  previousState:boolean = false;
  nextState:boolean = false;
- 
+ isCurrent:string;
+ classState:string;
+ currentKey:string = "current_key_";
+ comparerKey:string = "current_key_";
  constructor(private httpSharedService:ServiceFunctionCallService) { 
    this.currentPage = 1;
    this.numberPerPage= 10;
-   this.numberOfPage =0;
-
+   this.numberOfPage =0; 
  }
 
    
@@ -31,6 +34,8 @@ export class PaginationComponent implements OnInit {
 
    for(var  i=1; i <= totalItems;i++){
      this.list.push(i);
+     let currentKey = this.currentKey+i;
+     this.pageListWordings.push(currentKey); 
    }
  }
 
@@ -50,23 +55,30 @@ export class PaginationComponent implements OnInit {
  
  loadList():void{
    let begin = ((this.currentPage - 1) * this.numberPerPage);
-   console.log("Begin : " + begin);
    let end = begin + this.numberPerPage;
-   console.log("End : " + end);
    this.pageList  = this.list.slice(begin, end);
+   //console.log(this.pageList.length);
+  //  for(var i=1; i<=this.pageList.length;i++){
+  //    let currentKey = "current_key_"+i;
+  //    this.pageListWordings[i] =currentKey; 
+  //  }
    this.check();
  }
  check():void{
 
    this.previousState = this.currentPage === 1?true:false;
-   this.nextState = this.currentPage === this.numberOfPage?true:false; 
-   console.log(this.previousState);
-   console.log(this.nextState);   
- }
+   this.nextState = this.currentPage === this.numberOfPage?true:false;   
+   
+}
 
 
   //Next Page
   submitRequestPage(id):void{
+    //this.isCurrent = this.currentPage === 1?"is-current":"";
+    
+    let receiver = this.currentKey+id;
+    this.comparerKey=receiver;
+    console.log(receiver);
     this.httpSharedService.sendNextPage(id);
   }
 

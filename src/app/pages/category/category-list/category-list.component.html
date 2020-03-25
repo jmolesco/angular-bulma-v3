@@ -2,7 +2,7 @@
   <p class="panel-heading">
     Maintenance &raquo; Category
   </p>
-  <div class="panel-block">
+  <div class="panel-block" style="display:none;">
     <div class="field has-addons">
       <div class="control">
         <input class="input" type="text" placeholder="Search Category">
@@ -22,7 +22,7 @@
   </div>
   <div class="panel-block">
     <p class="control has-icons-left">
-      <button class="button is-info is-fullwidth" routerLink="/new">Add New Category</button>
+      <button class="button is-info is-fullwidth" routerLink="new">Add New Category</button>
     </p>
   </div>
   <div class="column is-8 is-offset-2">
@@ -44,21 +44,17 @@
           </td>
           <td>
             <div class="buttons">
-              <button class="button is-primary">&nbsp;&nbsp;Edit&nbsp;&nbsp;</button>
-              <button class="button is-danger">Delete</button>
+              <button class="button is-primary" routerLink="{{category.id}}">&nbsp;&nbsp;Edit&nbsp;&nbsp;</button>
+              <button class="button is-danger" (click)="submitDeleteRecord(category.id)">Delete</button>
             </div>
-            <!-- <button type="button" class="btn btn-primary"><i class="fa fa-pencil-square-o"
-                              aria-hidden="true"></i></button> &nbsp;&nbsp;
-                      <button type="button" class="btn btn-danger"><i class="fa fa-trash-o"
-                              aria-hidden="true"></i>
-                      </button> -->
+
           </td>
 
         </tr>
       </tbody>
     </table>
     <div class="column is-8 is-offset-2">
-      <app-pagination *ngIf= "totalPageList>0" [paginationTotal]="totalPageList"></app-pagination>
+      <app-pagination *ngIf="totalPageList>0" [paginationTotal]="totalPageList"></app-pagination>
     </div>
 
   </div>
