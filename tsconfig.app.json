@@ -10,6 +10,7 @@
     "@environment/*":["./environments/*"],
     "@sharedPages/*":["./app/shared/pages/*"],
     "@sharedInterfaces/*":["./app/shared/interface/*"],
+    "@sharedServices/*":["./app/shared/services/*"],
     "@pages/*":["./app/pages/*"],
     "@services/*":["./app/shared/services/*"],
     "@dashboard/*":["./app/pages/dashboard/*"],

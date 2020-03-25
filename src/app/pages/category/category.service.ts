@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { categoryInterface }  from './categoryInterface'
 import { Observable } from 'rxjs';
 import {environment} from '@environment/environment';
-import { ServiceRequestCallService } from '@shared/services/service-request-call.service';
+import { ServiceRequestCallService} from '@shared/shared.module'; 
 import { authenticationInterface } from '@sharedInterfaces/authenticationInterface';
 
 @Injectable({
@@ -22,7 +22,6 @@ export class CategoryService {
     let url:authenticationInterface = { 
         api_url:this.url,             
     }
-    console.log(category);
     let response = this.httpServiceRequest.addResponseCall(url, category);
     return response;
   }
@@ -38,7 +37,6 @@ export class CategoryService {
     let url:authenticationInterface = { 
         api_url:this.url+"?currentpage="+parameters.currentPage+"&showall="+parameters.showAll,             
     }
-    console.log(url);
     return this.httpServiceRequest.getResponseCall(url);
   }
 }
