@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import {CategoryService} from '../category.service';
+import {  ServiceFunctionCallService} from '@shared/shared.module'; 
 @Component({
   selector: 'app-category-list',
   templateUrl: './category-list.component.html',
@@ -10,24 +11,34 @@ export class CategoryListComponent implements OnInit {
   
   clickEventsubscription:Subscription;
 
-  constructor(private httpService:CategoryService, ) { 
+  constructor(private httpService:CategoryService,
+    private httpSharedService:ServiceFunctionCallService
+    ) { 
   }
 
   //VARIABLES
   categoryList;
   totalPageList:number=0;
-  parameters:object ={
-    currentPage:1,
-    showAll:false
-  };
-
+  currentPage:number = 1;
+  showAll:boolean = false;
+  
 
   ngOnInit(): void {
-    this.recordListLoader();
+    this.recordListLoader(this.currentPage, this.showAll);
+    if (this.httpSharedService.subsVar==undefined) 
+    {    
+      this.httpSharedService.subsVar = this.httpSharedService.invokeFirstComponentFunction.subscribe((currentPage:number) => {    
+        this.currentPage = currentPage; 
+        this.recordListLoader(this.currentPage, this.showAll)
+      });    
+    }
   }
-  recordListLoader():void{
-    console.log(this.parameters);
-    this.httpService.getAllCategory(this.parameters).subscribe(data=>
+  recordListLoader(currentPage, showAll):void{
+    let parameters = {
+      currentPage:currentPage,
+      showAll:showAll
+    }
+    this.httpService.getAllCategory(parameters).subscribe(data=>
       {   
          this.categoryList = data['list'];
          this.totalPageList = data["totalPage"]

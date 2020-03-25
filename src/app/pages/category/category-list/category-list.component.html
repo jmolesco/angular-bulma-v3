@@ -58,7 +58,7 @@
       </tbody>
     </table>
     <div class="column is-8 is-offset-2">
-      <app-pagination></app-pagination>
+      <app-pagination *ngIf= "totalPageList>0" [paginationTotal]="totalPageList"></app-pagination>
     </div>
 
   </div>

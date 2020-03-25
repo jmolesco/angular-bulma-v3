@@ -11,3 +11,5 @@ import {PagesModule} from '@sharedPages/pages.module';
   ]
 })
 export class SharedModule { }
+export { ServiceFunctionCallService } from './services/service-function-call.service'
+export { ServiceRequestCallService } from './services/service-request-call.service'
