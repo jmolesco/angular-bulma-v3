@@ -1,1 +1,48 @@
-<p>supplier-detail works!</p>
+<article class="panel is-primary">
+    <p class="panel-heading">
+        Maintenance &raquo; New Supplier
+    </p>
+    <div class="panel-block">
+        <div class="column column is-6 is-offset-3" *ngIf="functionStatus">
+            <div class="notification is-primary is-light has-text-centered">
+                <button class="delete"></button>
+                <strong>Record has been successfully {{functionUsed}}</strong>
+            </div>
+        </div>
+    </div>
+
+    <div class="column column is-6 is-offset-3">
+        <form (ngSubmit)="functionState===false?submitInsertRecord():submitEditRecord()" #supplierForm="ngForm">
+            <div class="field" *ngIf="functionState">
+                <label class="label">Supplier ID</label>
+                <div class="control">
+                    <input class="input" type="text" placeholder="Supplier ID" [(ngModel)]="id" name="id"
+                        [disabled]="true">
+                </div>
+                <!-- <p class="help">Supplier ID is required</p> -->
+            </div>
+            <div class="field">
+
+                <label class="label">Supplier Name</label>
+                <div class="control">
+                    <input class="input" type="text" placeholder="Supplier Name" [(ngModel)]="supplierName"
+                        #supplierNameInput="ngModel" name="supplierName" required />
+                </div>
+                <p class="help is-danger" *ngIf="supplierNameInput.invalid && supplierNameInput.touched">
+                    Supplier Name is required
+                </p>
+            </div>
+            <div class="field is-grouped">
+                <div class="control">
+                    <button class="button is-link" [disabled]="supplierForm.invalid">Submit Record</button>
+                </div>
+                <div class="control">
+                    <button class="button is-link is-light" routerLink="/supplier">Go Back</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="panel-block">
+        &nbsp;
+    </div>
+</article>

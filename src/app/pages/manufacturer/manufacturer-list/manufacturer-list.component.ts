@@ -15,6 +15,9 @@ export class ManufacturerListComponent implements OnInit {
   constructor(private httpService:ManufacturerService,
     private httpSharedService:ServiceFunctionCallService
     ) { 
+      if(this.httpSharedService.subsVar!==undefined){
+        this.httpSharedService.subsVar = undefined;
+      }
   }
 
 
@@ -27,6 +30,8 @@ export class ManufacturerListComponent implements OnInit {
 
   ngOnInit(): void {
     this.recordListLoader(this.currentPage, this.showAll);
+    console.log("manufacturer : " );
+    console.log(this.httpSharedService.subsVar);
     if (this.httpSharedService.subsVar==undefined) 
     {    
       this.httpSharedService.subsVar = this.httpSharedService.invokeFirstComponentFunction.subscribe((currentPage:number) => {    

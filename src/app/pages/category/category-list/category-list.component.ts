@@ -15,6 +15,9 @@ export class CategoryListComponent implements OnInit {
   constructor(private httpService:CategoryService,
     private httpSharedService:ServiceFunctionCallService
     ) { 
+      if(this.httpSharedService.subsVar!==undefined){
+        this.httpSharedService.subsVar = undefined;
+      }
   }
 
   //VARIABLES
@@ -26,6 +29,8 @@ export class CategoryListComponent implements OnInit {
 
   ngOnInit(): void {
     this.recordListLoader(this.currentPage, this.showAll);
+    console.log("category : " );
+    console.log(this.httpSharedService.subsVar);
     if (this.httpSharedService.subsVar==undefined) 
     {    
       this.httpSharedService.subsVar = this.httpSharedService.invokeFirstComponentFunction.subscribe((currentPage:number) => {    
